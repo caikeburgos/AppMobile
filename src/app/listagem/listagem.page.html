@@ -22,16 +22,16 @@
 
 	</ion-list> -->
 
-	<ion-card *ngFor="let item of itens">
+	<ion-card *ngFor="let post of posts">
 		<ion-card-header>
 			<img src="https://www.simnoticias.com.br/wp-content/uploads/2019/08/veleiro-4.jpg">
 			<ion-card-subtitle>
-				{{item.titulo}}
+				{{post.title}}
 			</ion-card-subtitle>
 		</ion-card-header>
 		<ion-card-content>
 			<p>
-				{{item.descricao}}
+				{{post.body}}
 			</p>
 			<ion-button color="primary">Acessar</ion-button>
 		</ion-card-content>
