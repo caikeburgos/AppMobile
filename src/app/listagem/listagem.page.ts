@@ -10,24 +10,29 @@ export class ListagemPage implements OnInit {
 
 	public itens: Array<{ titulo: string; descricao: string }> = [];
   public posts;
+  public page;
+  public total_page;
 
   constructor(private apiService : ApiService) { 
 
-    this.apiService.getPosts().subscribe((data)=>{
+    this.page = 1;
+
+    this.apiService.getPosts(this.page).subscribe((data)=>{
       console.log(data);
-      this.posts = data;
+      this.posts = data.data;
     });
 
-  	// for (let i = 0; i < 5; i++) {
-   //    this.itens.push(
-   //    {
-   //      titulo: 'Elemento ' + (i+1),
-   //      descricao: 'This is item #' + (i+1)
-   //    }
-   //    );
-
-  //}
 }
+
+loadMoreData(event) {
+
+  this.page++;
+
+   this.apiService.getPosts(this.page).subscribe((data)=>{
+      console.log(data);
+      event.target.complete();
+    });
+  }
 
   ngOnInit() {
   }
