@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-formulario',
@@ -8,7 +9,12 @@ import { AlertController } from '@ionic/angular';
 })
 export class FormularioPage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  dadosPessoa = {
+    job:'',
+    name:''
+  }
+
+  constructor(public alertController: AlertController, private apiService : ApiService) { }
 
   ngOnInit() {
   }
@@ -16,10 +22,21 @@ export class FormularioPage implements OnInit {
    async enviarDados() {
     const alert = await this.alertController.create({
       header: 'Pronto!',
-      message: 'Dados cadastrados!',
+      message: this.dadosPessoa.name,
       buttons: ['OK']
     });
 
      await alert.present();
+
+     this.apiService
+      .sendPostRequest(this.dadosPessoa)
+      .subscribe((data)=>{
+        console.log(data);
+        }, error => {
+          console.log(error);
+        });
+
+      }
+
 }
-}
+

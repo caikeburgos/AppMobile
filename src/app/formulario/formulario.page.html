@@ -12,19 +12,15 @@
 	<form>
 
 		<ion-item>
-			<ion-label>E-mail</ion-label>
-			<ion-input type="email"></ion-input>
+			<ion-label>Job:</ion-label>
+			<ion-input type="text" [(ngModel)]="dadosPessoa.job" name="job"></ion-input>
 		</ion-item>
 
 		<ion-item>
-			<ion-label>First Name</ion-label>
-			<ion-input type="text"></ion-input>
+			<ion-label>Name:</ion-label>
+			<ion-input type="text" [(ngModel)]="dadosPessoa.name" name="name"></ion-input>
 		</ion-item>
 
-		<ion-item>
-			<ion-label>Last Name</ion-label>
-			<ion-input type="text"></ion-input>
-		</ion-item>
 
 		<ion-button color="primary" type="submit" (click)="enviarDados()">Enviar</ion-button>
 
