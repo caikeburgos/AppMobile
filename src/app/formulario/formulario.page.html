@@ -9,16 +9,21 @@
 
 <ion-content>
 
-	<form>
-
+	<form> <!-- ou -->
+		<!-- <form (ngSubmit)="enviarDados()"> -->
 		<ion-item>
-			<ion-label>Job:</ion-label>
-			<ion-input type="text" [(ngModel)]="dadosPessoa.job" name="job"></ion-input>
+			<ion-label>Nome:</ion-label>
+			<ion-input type="text" [(ngModel)]="dadosPessoa.nome" name="nome"></ion-input>
 		</ion-item>
 
 		<ion-item>
-			<ion-label>Name:</ion-label>
-			<ion-input type="text" [(ngModel)]="dadosPessoa.name" name="name"></ion-input>
+			<ion-label>E-mail:</ion-label>
+			<ion-input type="email" [(ngModel)]="dadosPessoa.email" name="email"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>Idade:</ion-label>
+			<ion-input type="number" [(ngModel)]="dadosPessoa.idade" name="idade"></ion-input>
 		</ion-item>
 
 

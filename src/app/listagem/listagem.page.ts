@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
 @Component({
   selector: 'app-listagem',
@@ -12,7 +14,7 @@ export class ListagemPage implements OnInit {
   public page:any;
   public total_page:any;
 
-  constructor(private apiService : ApiService) { 
+  constructor(private apiService : ApiService, private modalController : ModalController) { 
 
     this.page = 1;
 
@@ -37,6 +39,13 @@ loadMoreData(event) {
       }
 
     });
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalPage
+    });
+    return await modal.present();
   }
 
   ngOnInit() {

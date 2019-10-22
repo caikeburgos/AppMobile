@@ -10,8 +10,9 @@ import { ApiService } from '../api.service';
 export class FormularioPage implements OnInit {
 
   dadosPessoa = {
-    job:'',
-    name:''
+    nome:'',
+    email:'',
+    idade:''
   }
 
   constructor(public alertController: AlertController, private apiService : ApiService) { }
@@ -20,9 +21,12 @@ export class FormularioPage implements OnInit {
   }
 
    async enviarDados() {
+
+    // const retorno = await this.apiService.postData(this.dadosPessoa);
+
     const alert = await this.alertController.create({
       header: 'Pronto!',
-      message: this.dadosPessoa.name,
+      message: this.dadosPessoa.nome,
       buttons: ['OK']
     });
 
