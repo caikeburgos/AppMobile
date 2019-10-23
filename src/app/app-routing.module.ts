@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   { path: 'listagem', loadChildren: './listagem/listagem.module#ListagemPageModule' },
   { path: 'formulario', loadChildren: './formulario/formulario.module#FormularioPageModule' },
-  { path: 'modal-page', loadChildren: './modal-page/modal-page.module#ModalPagePageModule' },
+  // { path: 'modal-page', loadChildren: './modal-page/modal-page.module#ModalPagePageModule' },
   { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' }
 ];
 

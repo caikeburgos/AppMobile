@@ -41,9 +41,14 @@ loadMoreData(event) {
     });
   }
 
-  async presentModal() {
+  async presentModal(post) {
     const modal = await this.modalController.create({
-      component: ModalPage
+      component: ModalPage,
+      componentProps:{
+        'firstName': post.first_name,
+        'lastName': post.last_name,
+        'modalController': this.modalController
+      }
     });
     return await modal.present();
   }
