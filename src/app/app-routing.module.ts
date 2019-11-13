@@ -18,7 +18,9 @@ const routes: Routes = [
   { path: 'listagem', loadChildren: './listagem/listagem.module#ListagemPageModule' },
   { path: 'formulario', loadChildren: './formulario/formulario.module#FormularioPageModule' },
   // { path: 'modal-page', loadChildren: './modal-page/modal-page.module#ModalPagePageModule' },
-  { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' }
+  { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' },
+  { path: 'deletar', loadChildren: './deletar/deletar.module#DeletarPageModule' },
+  { path: 'update', loadChildren: './update/update.module#UpdatePageModule' }
 ];
 
 @NgModule({

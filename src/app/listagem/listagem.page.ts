@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-listagem',
@@ -14,7 +15,7 @@ export class ListagemPage implements OnInit {
   public page:any;
   public total_page:any;
 
-  constructor(private apiService : ApiService, private modalController : ModalController) { 
+  constructor(private apiService : ApiService, private modalController : ModalController, public alertController: AlertController) { 
 
     this.page = 1;
 
@@ -51,6 +52,55 @@ loadMoreData(event) {
       }
     });
     return await modal.present();
+  }
+
+  async atualizarItem(post){
+
+    // let post = {
+
+    //   "name": "morpheus",
+    //   "job": "zion resident"
+
+    // }
+
+    await this.apiService
+      .sendPutRequest(post, post.id)
+      .subscribe((data)=>{
+        console.log(data);
+        }, error => {
+          console.log(error);
+        });
+
+    const alert = await this.alertController.create({
+      header: 'Pronto!',
+      message: 'Dados atualizados com sucesso!',
+      buttons: ['OK']
+    });
+
+     await alert.present();
+
+     
+  }
+
+  async deletarItem(post){
+
+    await this.apiService
+      .sendDeleteRequest(post.id)
+      .subscribe((data)=>{
+        console.log(data);
+        }, error => {
+          console.log(error);
+        });
+
+    const alert = await this.alertController.create({
+      header: 'Pronto!',
+      message: 'Dados deletados com sucesso!',
+      buttons: ['OK']
+    });
+
+     await alert.present();
+
+     
   }
 
   ngOnInit() {
